@@ -25,7 +25,7 @@ function App() {
           errorElement: <SinglePageError />,
         },
         {
-          path: "cocktail",
+          path: "cocktail/:id",
           element: <Cocktail />,
         },
         {
