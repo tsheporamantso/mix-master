@@ -14,7 +14,7 @@ export const loader = async ({ params }) => {
 };
 
 const Cocktail = () => {
-  const { data } = useLoaderData();
+  const { data, id } = useLoaderData();
 
   if (!data) return <Navigate to="/" />;
 
