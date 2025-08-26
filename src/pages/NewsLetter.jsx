@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 
 const newsletterUrl = "https://www.course-api.com/cocktails-newsletter";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const action = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);

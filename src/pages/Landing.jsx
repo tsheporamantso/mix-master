@@ -7,10 +7,11 @@ import axios from "axios";
 const cocktailSearchUrl =
   "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 // eslint-disable-next-line react-refresh/only-export-components
-export const loader = async () => {
-  const searchTerm = "a";
-  const resp = await axios.get(`${cocktailSearchUrl}${searchTerm}`);
-  return { drinks: resp.data.drinks, searchTerm };
+export const loader = async ({ request }) => {
+  const url = new URL(request.url);
+  const searchTerm = url.searchParams.get("search") || "";
+  const response = await axios.get(`${cocktailSearchUrl}${searchTerm}`);
+  return { drinks: response.data.drinks, searchTerm };
 };
 
 const Landing = () => {
@@ -18,7 +19,7 @@ const Landing = () => {
 
   return (
     <>
-      <SearchForm />
+      <SearchForm searchTerm={searchTerm} />
       <CocktailList drinks={drinks} />
     </>
   );
